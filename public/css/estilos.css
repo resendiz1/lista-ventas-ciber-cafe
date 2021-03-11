@@ -1,0 +1,10 @@
+.flotante{
+    display: scroll;
+    position: fixed;
+    top: 50px;
+    left: 10px;
+    z-index: 2;
+}
+.grande{
+    font-size: 200;
+}

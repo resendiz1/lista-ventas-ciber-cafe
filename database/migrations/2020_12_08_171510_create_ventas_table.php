@@ -17,6 +17,7 @@ class CreateVentasTable extends Migration
             $table->id();
             $table->text('descripcion');
             $table->string('precio');
+            $table->string('fecha');
             $table->timestamps();
         });
     }

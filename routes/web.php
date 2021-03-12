@@ -27,3 +27,4 @@ Route::view('/venta', 'ventas')->name('ventas');
 
 
 Route::post('hoy', [ventasController::class, 'store'])->name('ventas.store');
+Route::get('inicio/{$id}', [ventasController::class, 'show'])->name('ventas.show');

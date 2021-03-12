@@ -15,7 +15,7 @@ class CreateFechaTable extends Migration
     {
         Schema::create('fecha', function (Blueprint $table) {
             $table->id();
-            $table->strin('fecha');
+            $table->string('fecha');
             $table->timestamps();
         });
     }

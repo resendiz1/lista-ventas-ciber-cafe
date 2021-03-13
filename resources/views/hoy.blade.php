@@ -60,7 +60,7 @@
           </div>
    
       <div class="col-9 card p-2 bg-gray">
-        <div class="card-header text-center mb-3 h2">Extras de hoy: <small> {{now()->isoFormat('LL ')}} </small></div>
+        <div class="card-header text-center mb-3 h2">Extras de hoy: <small> {{now()->isoFormat('LLL')}} </small></div>
         <div class="row p-3 d-flex justify-content-around">
 
           <table class="table table-striped shadow">
@@ -73,29 +73,21 @@
               </tr>
             </thead>
             <tbody>
+              @forelse ($hoy as $hoyItem)
               <tr>
                 <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-              </tr>
+                <td>{{$hoyItem->descripcion}}</td>
+                <td>{{$hoyItem->precio}}</td>
+                <td> <span class="badge badge-default p-2"> <i class="fa fa-clock mx-2"></i>  {{substr($hoyItem->created_at, -8, 5)}}</span> </td>
+              </tr>     
+              @empty
+                  <li>No hay nada</li>
+              @endforelse
             </tbody>
           </table>
 
         </div>
-        <h1 class="text-center">Total: <strong>$ 300.00</strong></h1>
+        <h1 class="text-center">Total: <strong>$</strong></h1>
       </div>
 
 

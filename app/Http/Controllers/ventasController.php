@@ -10,7 +10,7 @@ class ventasController extends Controller
 {
     public function store(){
 
-         $fecha = now()->format('d-m-Y');
+         $fecha = now()->format('d m Y');
 
         Venta::create([
             'descripcion' => request('descripcion'),
@@ -21,10 +21,24 @@ class ventasController extends Controller
     }
 
     public function index(){
+
         $venta = Venta::distinct('created_at')->get('created_at');
-
         $ventas = DB::select('SELECT DISTINCT fecha FROM ventas ');
-
         return view('inicio', compact('ventas'));
     }
+
+    public function hoy(){
+
+        $now = now()->format('d m Y');
+        $hoy = DB::select("SELECT*FROM ventas WHERE fecha LIKE '$now' ");
+        $suma = DB::select("SELECT sum(precio) FROM ventas WHERE fecha LIKE '$now'  ");
+        // $duperSuma = implode($suma);
+
+      
+        return view('hoy', compact('hoy'));
+
+    }
+
+
+
 }

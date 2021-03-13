@@ -25,10 +25,11 @@
 
           @forelse ($ventas as $ventasItem)
           <div class="col-3 p-2 mx-1 mb-3 card">
-            <a href="{{route('ventas.show', $ventasItem)}}" class="text-dark">
-            <div class="card-header text-white text-center bg-success mb-3 h2">{{ substr($ventasItem->fecha , 0, -8) }}</div>
+            <a href="" class="text-dark">
+            <div class="card-header text-white text-center bg-success mb-3 h2">{{ substr($ventasItem->fecha, 3, -5) }}</div>
             <div class="card-body">
-              <h1 class="text-center font-weight-bold h1 ">{{ substr($ventasItem->fecha, 3, -5) }}
+              <h1 class="text-center font-weight-bold h1 ">
+                {{ substr($ventasItem->fecha , 0, -8) }}
               </h1>
               <hr>
             </div>
@@ -56,28 +57,6 @@
               2020              
             </div>
           </div>
-          <div class="col-3 p-3 mx-1 mb-3 card">
-            <div class="card-header text-white text-center bg-success mb-3 h2">Junio</div>
-            <div class="card-body">
-              <h1 class="text-center font-weight-bold h1 ">23</h1>
-              <hr>
-            </div>
-            <div class="card-footer h2 text-center p-2 bg-success text-white">
-              2020              
-            </div>
-          </div>
-  
-          <div class="col-3 p-3 mx-1 mb-3 card">
-            <div class="card-header text-white text-center bg-success mb-3 h2">Junio</div>
-            <div class="card-body">
-              <h1 class="text-center font-weight-bold h1 ">23</h1>
-              <hr>
-            </div>
-            <div class="card-footer h2 text-center p-2 bg-success text-white">
-              2020              
-            </div>
-          </div>
-
         </div>
       </div>
     </div>

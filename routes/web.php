@@ -22,9 +22,10 @@ Route::get('/', [ventasController::class, 'index'])->name('inicio');
 
 
 
-Route::view('/hoy', 'hoy')->name('hoy');
+// Route::view('/hoy', 'hoy')->name('hoy');
 Route::view('/venta', 'ventas')->name('ventas');
 
 
 Route::post('hoy', [ventasController::class, 'store'])->name('ventas.store');
 Route::get('inicio/{$id}', [ventasController::class, 'show'])->name('ventas.show');
+Route::get('hoy', [ventasController::class, 'hoy'])->name('hoy');

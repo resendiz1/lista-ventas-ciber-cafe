@@ -30,14 +30,26 @@ class ventasController extends Controller
     public function hoy(){
 
         $now = now()->format('d m Y');
-        $hoy = DB::select("SELECT*FROM ventas WHERE fecha LIKE '$now' ");
+       return  $hoy = DB::select("SELECT*FROM ventas WHERE fecha LIKE '$now' ");
         $suma = DB::select("SELECT sum(precio) FROM ventas WHERE fecha LIKE '$now'  ");
         // $duperSuma = implode($suma);
 
       
-        return view('hoy', compact('hoy'));
+        return view('hoy', compact('hoy', 'suma'));
 
     }
+
+    public function show(){
+        return 'hola';
+    }
+
+    // public function show(Venta $fecha){
+
+    //         return view('ventas');
+    // }
+
+
+
 
 
 

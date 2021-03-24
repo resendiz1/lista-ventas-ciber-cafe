@@ -25,7 +25,7 @@
 
           @forelse ($ventas as $ventasItem)
           <div class="col-3 p-2 mx-1 mb-3 card">
-            <a href="" class="text-dark">
+            <a href="{{route('venta.show', $ventasItem->fecha)}}" class="text-dark">
             <div class="card-header text-white text-center bg-success mb-3 h2">{{ substr($ventasItem->fecha, 3, -5) }}</div>
             <div class="card-body">
               <h1 class="text-center font-weight-bold h1 ">

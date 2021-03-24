@@ -24,8 +24,8 @@ Route::get('/', [ventasController::class, 'index'])->name('inicio');
 
 // Route::view('/hoy', 'hoy')->name('hoy');
 Route::view('/venta', 'ventas')->name('ventas');
+Route::get('/hoy', [ventasController::class, 'hoy'])->name('hoy');
+Route::get('/{fecha}', [ventasController::class, 'show'])->name('venta.show');
+Route::post('/hoy', [ventasController::class, 'store'])->name('ventas.store');
 
-Route::get('/{$fecha}', [ventasController::class, 'show'])->name('venta.show');
-Route::post('hoy', [ventasController::class, 'store'])->name('ventas.store');
-Route::get('hoy', [ventasController::class, 'hoy'])->name('hoy');
 

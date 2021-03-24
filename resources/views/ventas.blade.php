@@ -4,11 +4,14 @@
 <div class="container-fluid">
     <div class="row p-5 mt-5 d-flex justify-content-end flex-wrap">
 
+      <div class="col-8 text-left my-2">
+        <a href="{{route('inicio')}}" class="btn btn-danger btn-sm"> <i class="fa fa-home"></i> Regresar</a>
+      </div>
       
  
    
       <div class="col-9 card p-2 bg-gray">
-        <div class="card-header text-center mb-3 h2">Extras del dia: <small> 28 de Diciembre del 2020 </small></div>
+        <div class="card-header bg-default text-white text-center mb-3 h2">Extras del dia: <small> {{$fecha}}</small></div>
         <div class="row p-3 d-flex justify-content-around">
 
           <table class="table table-striped">
@@ -21,29 +24,32 @@
               </tr>
             </thead>
             <tbody>
+
+              @php
+                  ($resendiz = 0)
+              @endphp
+
+              @forelse ($ventas as $ventasItem)
+              
               <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
+                <th scope="row">{{ $ventasItem->id }}</th>
+                <td>{{$ventasItem->descripcion}}</td>
+                <td>{{$ventasItem->precio}}</td>
+                <td class="badge badge-success"> <i class="fa fa-clock mr-2"></i> {{substr($ventasItem->created_at, -5)}}</td>
               </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-              </tr>
+              @php
+                   $resendiz = $resendiz + intval($ventasItem->precio)
+              @endphp
+                 
+              @empty
+                  <li>No hay datos</li>
+              @endforelse
+
             </tbody>
           </table>
 
         </div>
-        <h1 class="text-center">Total: <strong>$ 300.00</strong></h1>
+        <h1 class="text-center">Total: <strong>$ {{$resendiz}}</strong></h1>
       </div>
 
 

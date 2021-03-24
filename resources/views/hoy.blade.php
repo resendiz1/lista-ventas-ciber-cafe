@@ -60,7 +60,7 @@
           </div>
    
       <div class="col-9 card p-2 bg-gray">
-        <div class="card-header text-center mb-3 h2">Extras de hoy: <small> {{now()->isoFormat('LLL')}} </small></div>
+        <div class="card-header bg-default text-white text-center mb-3 h2">Extras de hoy: <small> {{now()->isoFormat('LLL')}} </small></div>
         <div class="row p-3 d-flex justify-content-around">
 
           <table class="table table-striped shadow">
@@ -73,13 +73,19 @@
               </tr>
             </thead>
             <tbody>
+              @php
+                  $resendiz = 0;
+              @endphp
               @forelse ($hoy as $hoyItem)
               <tr>
-                <th scope="row">1</th>
+                <th scope="row">{{$hoyItem->id}}</th>
                 <td>{{$hoyItem->descripcion}}</td>
                 <td>{{$hoyItem->precio}}</td>
                 <td> <span class="badge badge-default p-2"> <i class="fa fa-clock mx-2"></i>  {{substr($hoyItem->created_at, -8, 5)}}</span> </td>
-              </tr>     
+              </tr>  
+              @php
+                  $resendiz = $resendiz + $hoyItem->precio;
+              @endphp   
               @empty
                   <li>No hay nada</li>
               @endforelse
@@ -87,7 +93,7 @@
           </table>
 
         </div>
-        <h1 class="text-center">Total: <strong>$</strong></h1>
+        <h1 class="text-center">Total: <strong>$ {{$resendiz}}</strong></h1>
       </div>
 
 

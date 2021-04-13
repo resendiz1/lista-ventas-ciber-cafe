@@ -21,8 +21,8 @@
 <body>
 
     <div class="row flotante d-flex justify-content-center">
-    <div class="col-12 card p-2 text-center mt-2"><a href="{{route('inicio')}}" class="{{request()->routeIs('inicio') ? 'btn-default' : ''}}">Inicio</a></div>
-    <div class="col-12 card p-2 text-center mt-2"><a href="{{route('hoy')}}" class="{{request()->routeIs('hoy') ? 'btn-default' : ''}}">Otro menu</a></div>
+    <div class="col-12 card p-2 text-center mt-2"><a href="{{route('inicio')}}" class="{{request()->routeIs('inicio') ? 'btn-default' : ''}}">VENTAS POR DIA</a></div>
+    <div class="col-12 card p-2 text-center mt-2"><a href="{{route('hoy')}}" class="{{request()->routeIs('hoy') ? 'btn-default' : ''}}">VENTAS DE HOY</a></div>
       </div>
 @yield('contenido')
 

@@ -20,7 +20,7 @@
                 <th scope="col">#</th>
                 <th scope="col">Descripción</th>
                 <th scope="col">Monto</th>
-                <th scope="col">Hora</th>
+                <th scope="col">Horas</th>
               </tr>
             </thead>
             <tbody>
@@ -35,7 +35,7 @@
                 <th scope="row">{{ $ventasItem->id }}</th>
                 <td>{{$ventasItem->descripcion}}</td>
                 <td>{{$ventasItem->precio}}</td>
-                <td class="badge badge-success"> <i class="fa fa-clock mr-2"></i> {{substr($ventasItem->created_at, -5)}}</td>
+                <td class="badge badge-success"> <i class="fa fa-clock mr-2"></i> {{substr($ventasItem->created_at, -8)}}</td>
               </tr>
               @php
                    $resendiz = $resendiz + intval($ventasItem->precio)

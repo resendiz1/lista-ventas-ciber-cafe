@@ -10,7 +10,19 @@ class ventasController extends Controller
 {
     public function store(){
 
-         $fecha = now()->format('d-m-Y');
+        
+        $fecha = now()->format('d-m-Y');
+
+        $imagen = request()->file('foto')->store('public');
+
+        request()->validate([
+            request('descripcion') => 'required',
+            request('area') => 'required',
+        ]);
+
+        return request();
+  
+        
 
         Venta::create([
             'descripcion' => request('descripcion'),
@@ -46,17 +58,6 @@ class ventasController extends Controller
 
         $ventas = DB::select("SELECT*FROM ventas WHERE fecha LIKE '$fecha' ");
      
-
-        
-
-    
-
-
-        
-        
-    
-        
-
         return view('ventas', compact('ventas', 'fecha'));
     }
 

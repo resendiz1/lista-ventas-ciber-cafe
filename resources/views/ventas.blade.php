@@ -19,7 +19,7 @@
               <tr>
                 <th scope="col">#</th>
                 <th scope="col">Descripción</th>
-                <th scope="col">Monto</th>
+                <th scope="col">Área donde se realizo</th>
                 <th scope="col">Horas</th>
               </tr>
             </thead>
@@ -49,7 +49,7 @@
           </table>
 
         </div>
-        <h1 class="text-center">Total: <strong>$ {{$resendiz}}</strong></h1>
+  
       </div>
 
 

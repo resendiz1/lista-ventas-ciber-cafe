@@ -43,7 +43,7 @@
                         @csrf
                   <div class="md-form mb-5">
                     <i class="fas fa-paper prefix grey-text"></i>
-                    <input type="text" name="descripcion" id="defaultForm-email" class="form-control validate" required>
+                    <input type="text" name="descripcion" id="defaultForm-email" class="form-control validate" >
                     <label data-error="wrong" data-success="right" for="defaultForm-email">
                       Descripción
                     </label>
@@ -51,7 +51,7 @@
           
                   <div class="md-form mb-4">
                     <i class="fas fa-money prefix grey-text"></i>
-                    <input type="text" name="area" id="defaultForm-pass" class="form-control validate" required>
+                    <input type="text" name="area_trabajo" id="defaultForm-pass" class="form-control validate" >
                     <label data-error="wrong" data-success="right" for="defaultForm-pass">
                       Área donde se realizo 
                     </label>

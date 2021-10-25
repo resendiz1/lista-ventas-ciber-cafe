@@ -17,7 +17,7 @@
           <table class="table table-striped">
             <thead>
               <tr>
-                <th scope="col">#</th>
+                <th scope="col" >#</th>
                 <th scope="col">Descripción</th>
                 <th scope="col">Área donde se realizo</th>
                 <th scope="col">Horas</th>
@@ -33,13 +33,31 @@
               
               <tr>
                 <th scope="row">{{ $ventasItem->id }}</th>
-                <td>{{$ventasItem->descripcion}}</td>
-                <td>{{$ventasItem->precio}}</td>
-                <td class="badge badge-success"> <i class="fa fa-clock mr-2"></i> {{substr($ventasItem->created_at, -8)}}</td>
+                <td style="vertical-align: middle">{{$ventasItem->descripcion}}</td>
+                <td style="vertical-align: middle">{{$ventasItem->precio}}</td>
+                <td style="vertical-align: middle"><img src="{{Storage::url($ventasItem->foto1)}}" data-toggle="modal" data-target="#f{{$ventasItem->id}}" style="width: 200px; cursor: pointer;"></td>
+                <td class="badge badge-success" style="vertical-align: middle"> 
+                  <i class="fa fa-clock mr-2"></i> 
+                  {{substr($ventasItem->created_at, -8)}}
+                </td>
               </tr>
-              @php
-                   $resendiz = $resendiz + intval($ventasItem->precio)
-              @endphp
+     
+
+              
+              <div class="modal fade" id="f{{$ventasItem->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+              aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-body mx-3">
+                      <img src="{{Storage::url($ventasItem->foto1)}}" class="img-fluid" alt="">                    
+                  </div>
+                </div>
+              </div>
+            </div>
+
+         
+
+
                  
               @empty
                   <li>No hay datos</li>

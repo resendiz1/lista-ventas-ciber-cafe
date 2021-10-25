@@ -14,20 +14,23 @@ class ventasController extends Controller
         $fecha = now()->format('d-m-Y');
 
         $imagen = request()->file('foto')->store('public');
+        
+       
+        // request()->validate([
+        //     request('descripcion') => 'required',
+        //     request('area') => 'required',
+        //     request('')
+        // ]);
 
-        request()->validate([
-            request('descripcion') => 'required',
-            request('area') => 'required',
-        ]);
-
-        return request();
+        
   
         
 
         Venta::create([
             'descripcion' => request('descripcion'),
-            'precio' => request('cantidad'),
-            'fecha' => $fecha
+            'precio' => request('area_trabajo'),
+            'fecha' => $fecha,
+            'foto1' => $imagen
         ]);
         return redirect()->route('hoy')->with('status', 'Venta hecha');
     }

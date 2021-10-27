@@ -91,12 +91,26 @@
     
               @forelse ($hoy as $hoyItem)
               <tr>
-                <th scope="row">{{$hoyItem->id}}</th>
-                <td>{{$hoyItem->descripcion}}</td>
-                <td>{{$hoyItem->precio}}</td>
-                <td> <span class="badge badge-default p-2"> <i class="fa fa-clock mx-2"></i>  {{substr($hoyItem->created_at, -8, 5)}}</span> </td>
-              </tr>  
-
+                <th scope="row" style="vertical-align: middle" class="h6">{{$hoyItem->id}}</th>
+                <td style="vertical-align: middle">{{$hoyItem->descripcion}}</td>
+                <td style="vertical-align: middle">{{$hoyItem->precio}}</td>
+                <td style="vertical-align: middle">
+                  <img src="{{Storage::url($hoyItem->foto1)}}" data-toggle="modal" data-target="#f{{$hoyItem->id}}" style="width: 200px; cursor: pointer;">
+                </td>
+                <td style="vertical-align: middle"> <span class="badge badge-default p-2"> <i class="fa fa-clock mx-2"></i>  {{substr($hoyItem->created_at, -8, 5)}}</span> </td>
+              </tr> 
+              
+              
+              <div class="modal fade" id="f{{$hoyItem->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-body mx-3">
+                        <img src="{{Storage::url($hoyItem->foto1)}}" class="img-fluid" alt="">                    
+                    </div>
+                  </div>
+                </div>
+              </div>
               @empty
                   <li>No hay nada</li>
               @endforelse

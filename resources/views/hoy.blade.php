@@ -6,27 +6,29 @@
 <div class="container-fluid">
  
 
-   
-    <div class="row p-5 mt-5 d-flex justify-content-end flex-wrap">
 
-        <div class="col-9">
-            @if (session('status'))
-            <div class="alert alert-success p-3 text-center h3">{{session('status')}}</div>
-                @endif
-        </div>
-    
-      
-        <div class="col-9 mt-5">
-            <div class="text-center">
-            <a href="" class="btn btn-default btn-rounded mb-4 btn-block" data-toggle="modal" data-target="#modalLoginForm">
-              <h3 class="font-weight-bold">
-                <i class="fas fa-plus-circle mx-3 "></i> 
-                AGREGAR ACTIVIDAD REALIZADA
-              </h3> 
-            </a>
+  <div class="row justify-content-start">
+    <div class="col-4 mt-5 ml-5 p-0">
+      <div class="text-center">
+      <a href="" class="btn btn-primary btn-sm p-2 mb-4 rounded-pill" data-toggle="modal" data-target="#modalLoginForm">
+
+          <i class="fas fa-plus-circle mx-1 "></i> 
+         Actividad
+  
+      </a>
+      </div>
+        
+  </div> 
+  </div>
+   
+    <div class="row p-5  d-flex justify-content-center flex-wrap">
+      @if (session('status'))
+            <div class="col-9">
+              <div class="alert alert-success p-3 text-center h3">{{session('status')}}</div>
             </div>
-          
-          
+      @endif
+       
+  
           
             <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
             aria-hidden="true">
@@ -58,7 +60,10 @@
                   </div>
                   
                   <div class="md-form mb-4">
-                    <input type="file" name="foto"  >
+                    <input type="file" name="foto" id="imagen"  >
+                  </div>
+                  <div id="previa" class="md-form mb-4">
+
                   </div>
           
                 </div>
@@ -71,19 +76,19 @@
               </div>
             </div>
           </div>
-          
-          </div>
+     
    
       <div class="col-9 card p-2 bg-gray">
-        <div class="card-header bg-default text-white text-center mb-3 h2">Actividades de hoy: <small> {{now()->isoFormat('LLL')}} </small></div>
+        <div class="card-header bg-primary text-white text-center mb-3 h2">Actividades de hoy: <small> {{now()->isoFormat('LLL')}} </small></div>
         <div class="row p-3 d-flex justify-content-around">
 
-          <table class="table table-striped shadow">
+          <table class="table table-striped shadow text-center">
             <thead>
               <tr>
                 <th scope="col">#</th>
                 <th scope="col">Descripción</th>
                 <th scope="col">Area donde se realizo</th>
+                <th scope="col">Foto de evidencia</th>
                 <th scope="col">Hora</th>
               </tr>
             </thead>
@@ -95,9 +100,17 @@
                 <td style="vertical-align: middle">{{$hoyItem->descripcion}}</td>
                 <td style="vertical-align: middle">{{$hoyItem->precio}}</td>
                 <td style="vertical-align: middle">
-                  <img src="{{Storage::url($hoyItem->foto1)}}" data-toggle="modal" data-target="#f{{$hoyItem->id}}" style="width: 200px; cursor: pointer;">
+                  <img src="{{asset(Storage::url($hoyItem->foto1))}}" data-toggle="modal" data-target="#f{{$hoyItem->id}}" style="width: 200px; cursor: pointer;">
                 </td>
-                <td style="vertical-align: middle"> <span class="badge badge-default p-2"> <i class="fa fa-clock mx-2"></i>  {{substr($hoyItem->created_at, -8, 5)}}</span> </td>
+
+                <td style="vertical-align: middle" class="h5 text-center">
+                <div class="row justify-content-center">
+                  <div class="col-8 bg-white p-3 rounded-pill">
+                    <i class="fa fa-clock mx-2"></i>  <br>
+                      {{substr($hoyItem->created_at, -8, 5)}}
+                  </div>
+                </div>
+                </td>          
               </tr> 
               
               
@@ -106,7 +119,7 @@
                 <div class="modal-dialog" role="document">
                   <div class="modal-content">
                     <div class="modal-body mx-3">
-                        <img src="{{Storage::url($hoyItem->foto1)}}" class="img-fluid" alt="">                    
+                        <img src="{{asset(Storage::url($hoyItem->foto1))}}" class="img-fluid" alt="">                    
                     </div>
                   </div>
                 </div>

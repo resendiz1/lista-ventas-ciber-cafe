@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\programadasController;
 use App\Http\Controllers\ventasController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,14 +19,24 @@ use Illuminate\Support\Facades\Route;
 //     return view('inicio');
 // })->name('inicio');
 
+
+
+
+
+Route::delete('/{actividad}', [ventasController::class, 'delete'])->name('actividad.destroy');
+
+
+
+
+
 Route::get('/', [ventasController::class, 'index'])->name('inicio');
-
-
-
-// Route::view('/hoy', 'hoy')->name('hoy');
-Route::view('/venta', 'ventas')->name('ventas');
+Route::view('/actividades', 'actividades')->name('actividades');
 Route::get('/hoy', [ventasController::class, 'hoy'])->name('hoy');
 Route::get('/{fecha}', [ventasController::class, 'show'])->name('venta.show');
 Route::post('/hoy', [ventasController::class, 'store'])->name('ventas.store');
+
+
+
+
 
 

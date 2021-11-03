@@ -32,9 +32,10 @@ class ventasController extends Controller
             'fecha' => $fecha,
             'foto1' => $imagen
         ]);
-        return redirect()->route('hoy')->with('status', 'Venta hecha');
+        return redirect()->route('hoy')->with('status', 'Actividad registrada');
     }
 
+    
     public function index(){
 
         $venta = Venta::distinct('created_at')->get('created_at');
@@ -61,7 +62,12 @@ class ventasController extends Controller
 
         $ventas = DB::select("SELECT*FROM ventas WHERE fecha LIKE '$fecha' ");
      
-        return view('ventas', compact('ventas', 'fecha'));
+        return view('actividades', compact('ventas', 'fecha'));
+    }
+
+
+    public function delete(){
+        return 'Hola mundo';
     }
 
 
